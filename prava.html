@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Дія || Посвідчення водія</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--    <link rel="stylesheet" href="css/e-Ukraine_font/desktop/e-Ukraine-Bold.otf">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: 1s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: #e67eff;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100vh;
+            /*            background-color: royalblue;*/
+            display: flex;
+        }
+
+        .sideBar {
+            height: 100vh;
+            width: 25%;
+            background-color: black;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 1s;
+            font-family: 'e-Ukrine'bold
+        }
+
+        .content {
+            height: 100vh;
+            width: 75%;
+            /*            background-color: aquamarine;*/
+            position: absolute;
+            left: 25%;
+            top: 0;
+            transition: 1s;
+        }
+
+        .btnSpace {
+            width: 100%;
+            height: 10vh;
+            /*            background-color: red;*/
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            width: 40px;
+            /*            background-color: black;*/
+            /*            border-radius: 50%;*/
+            margin: 10px;
+        }
+
+        .contentSpace {
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sideBar {
+            height: 100vh;
+            width: 25%;
+            background-color: #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 1s;
+        }
+
+        .head_sideBar img {
+            width: 100px;
+        }
+
+        .about img {
+            width: 50px;
+        }
+
+        .about {
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 40px;
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .fs_b {
+            /*            margin-top: 15px;*/
+            margin-left: 10px;
+        }
+
+        .pravaPlus,
+        .pravaRegister,
+        .prava {
+            width: 500px;
+            height: 600px;
+            background-color: #efccff;
+            color: #000;
+            display: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+            flex-direction: column;
+            margin: 0 100px;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .pravaPlus {
+            display: flex;
+        }
+
+        .kolo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background-color: rgb(247, 247, 247);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
+            margin-top: -80px;
+            cursor: pointer;
+        }
+
+        .pravaRegister {
+            display: none;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: #000;
+            font-size: 17px;
+            padding: 20px;
+        }
+
+        input {
+            width: 90%;
+            border: none;
+            border-bottom: 1px solid #000;
+            outline: none;
+            margin-bottom: 50px;
+            margin-top: -16px;
+            background: none;
+        }
+
+        .p {
+            margin-top: 13px;
+        }
+
+        h1 {
+            margin-bottom: 80px;
+        }
+
+        .register {
+            background: none;
+            border: 1px solid greenyellow;
+            width: 300px;
+            height: 60px;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        .end {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .body_p {
+            display: flex;
+            flex-direction: row;
+        }
+
+        input {
+            font-size: 18px;
+        }
+
+        .prava {
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 30px 20px;
+        }
+
+        .birth {
+            margin-top: 20px;
+            font-size: 23px;
+        }
+
+        .left-side,
+        .right-side {
+            width: 250px;
+            height: 400px;
+            padding: 50px 0;
+        }
+
+        .S-name,
+        .name,
+        .F-name,
+        .birthday {
+            font-size: 23px;
+        }
+
+        .S-name {
+            margin-top: 50px;
+        }
+
+        .line {
+            height: 1px;
+            width: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .linE {
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+
+        .end {
+            width: 100%;
+            height: 25%;
+        }
+
+        .body_p {
+            width: 100%;
+            height: 60%;
+        }
+
+        .head_p {
+            width: 100%;
+            height: 15%;
+        }
+
+        #photo_prava {
+            width: 230px;
+            height: 300px;
+            border: 1px solid #000;
+            background-position: center;
+            background-size: cover;
+            margin-left: 10px;
+        }
+
+        .numbCar {
+            margin-top: 70px;
+            font-size: 35px;
+        }
+
+        .fs_b {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .fs_b:hover {
+            color: #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <div class="sideBar" id="sideBar">
+            <div class="head_sideBar">
+                <img src="logo.png" alt="">
+            </div>
+            <div class="body_sideBar">
+                <div class="about">
+                    <img src="pngwing.com.png" alt="">
+                    <a href="prava.html" class="fs_b">Посвідчення водія</a>
+                </div>
+                <div class="about">
+                    <img src="waks.png" alt="">
+                    <a href="vakcina.html" class="fs_b">Вакцинація</a>
+                </div>
+                <div class="about">
+                    <img src="kisspng-drawing-coloring-book-passport-sketch-passport-5b050a82d6bad7.5157483115270570268796.png" alt="">
+                    <a href="index.html" class="fs_b">Паспорт</a>
+                </div>
+                <div class="about">
+                    <img src="images.png" alt="">
+                    <a href="prava.html" class="fs_b">Подорожі</a>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="content">
+            <div class="btnSpace">
+                <img class="btn" src="logo.png" id="btn">
+            </div>
+            <div class="contentSpace">
+                <div class="pravaPlus">
+                    <div class="kolo">+</div>
+                </div>
+
+                <div class="pravaRegister">
+                    <h1>Вітаємо, <span id="nAme"></span> <span id="FatherName"></span></h1>
+                    <p class="p" id="p1">Введіть ваше id</p>
+                    <input type="text" id="search_id">
+                    <p class="p" id="p2">Введіть номер вашого транспортного засобу</p>
+                    <input type="text" id="car_number">
+                    <div class="end">
+                        <button class="register">Зареєструватися</button>
+                    </div>
+                </div>
+
+                <div class="prava">
+                    <div class="head_p">
+                        <h1>Посвідчення <br>водія</h1>
+                    </div>
+                    <div class="body_p">
+                        <div class="left_side">
+                            <div class="S-name"></div>
+                            <div class="name"></div>
+                            <div class="F-name"></div>
+                            <div class="birth">Дата народження: <br>
+                                <p class="birthday"></p>
+                            </div>
+                        </div>
+                        <div class="right_side">
+                            <div id="photo_prava"></div>
+                        </div>
+                    </div>
+                    <div class="end_p">
+                        <div class="line">
+                            <div class="linE"></div>
+                        </div>
+                        <div class="numbCar"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        if (localStorage.getItem('prava') == false) {
+            $('.pravaPlus').css('display', 'flex')
+            $('.pravaRegister').css('display', 'none')
+            $('.prava').css('display', 'none')
+        }
+
+        let cl = 1
+
+        if (cl == 0) {
+            sideBar.style.left = '-25%';
+            content.style.left = '0';
+            content.style.width = '100%';
+        }
+        if (cl == 1) {
+            sideBar.style.left = '0%';
+            content.style.left = '0';
+            content.style.width = '75%';
+            content.style.marginLeft = '25%';
+        }
+
+        btn.onclick = function() {
+            if (cl == 1) {
+                sideBar.style.left = '-25%';
+                content.style.left = '0';
+                content.style.width = '100%';
+                content.style.marginLeft = '0%';
+                cl = 0
+            } else if (cl == 0) {
+                sideBar.style.left = '0%';
+                content.style.left = '25%';
+                content.style.width = '75%';
+                cl = 1
+            }
+
+        }
+
+        $('.kolo').click(function() {
+            $('.pravaPlus').css('display', 'none')
+            $('.pravaRegister').css('display', 'flex')
+        })
+
+
+        FatherName.innerText = JSON.stringify(localStorage.getItem('FatherName'))
+
+        let nameInfo = JSON.stringify(localStorage.getItem('name'))
+
+        nAme.innerHTML = nameInfo
+
+        $('#search_id').click(function() {
+            $('#search_id').css('margin-top', '13px')
+            $('#p1').css('margin-top', '-13px')
+            $('#p1').css('font-size', '14px')
+        })
+
+        $('#car_number').click(function() {
+            $('#car_number').css('margin-top', '13px')
+            $('#p2').css('margin-bottom', '-13px')
+            $('#p2').css('font-size', '14px')
+        })
+
+
+        $('.register').click(function() {
+            if ($('#search_id').val() != JSON.parse(localStorage.getItem('ID'))) {
+                $('#search_id').css('border-bottom', '1px solid red')
+                $('#p1').css('color', 'red')
+                $('#p1').html('')
+                $('#p1').html('Неправельний ID')
+                $('#search_id').val('')
+            } else {
+                JSON.stringify(localStorage.setItem('prava', true))
+                JSON.stringify(localStorage.setItem('pravaNumber', $('#car_number').val()))
+                $('.pravaRegister').css('display', 'none')
+                $('.prava').css('display', 'flex')
+                $('.S-name').html(JSON.parse(localStorage.getItem('Surname')))
+                $('.F-name').html(JSON.parse(localStorage.getItem('FatherName')))
+                $('.name').html(JSON.parse(localStorage.getItem('name')))
+                $('.birthday').html(JSON.parse(localStorage.getItem('birthday')))
+                $('.numbCar').html(JSON.stringify(localStorage.setItem('pravaNumber', $('#car_number').val())))
+            }
+        })
+
+        if (JSON.parse(localStorage.getItem('prava')) == true) {
+            $('.pravaPlus').css('display', 'none')
+            $('.pravaRegister').css('display', 'none')
+            $('.prava').css('display', 'flex')
+        } else {
+            $('.pravaPlus').css('display', 'flex')
+            $('.pravaRegister').css('display', 'none')
+            $('.prava').css('display', 'none')
+        }
+
+        $('.pravaRegister').css('display', 'none')
+        $('.S-name').html(JSON.stringify(localStorage.getItem('Surname')))
+        $('.F-name').html(JSON.stringify(localStorage.getItem('FatherName')))
+        $('.name').html(JSON.stringify(localStorage.getItem('name')))
+        $('.birthday').html(JSON.stringify(localStorage.getItem('birthday')))
+        $('#photo_prava').css('background-image', 'url(' + JSON.stringify(localStorage.getItem('photo')) + ')')
+
+        $('.numbCar').html(localStorage.getItem('pravaNumber'))
+        
+        
+    </script>
+</body>
+
+</html>

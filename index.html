@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Дія || UA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" href="logo.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: 1s;
+        }
+
+        body {
+            background: rgb(162, 255, 128);
+            background: linear-gradient(90deg, rgba(162, 255, 128, 1) 0%, rgba(52, 255, 225, 1) 50%, rgba(255, 145, 201, 1) 100%);
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .wrap1 {
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrap2 {
+            display: none;
+            width: 100%;
+            height: 90vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #logo_page1 {
+            width: 300px;
+            transition: 1s;
+            margin-top: -50px;
+        }
+
+        #loader {
+            display: flex;
+            transition: 1s;
+        }
+
+        .box,
+        .box1 {
+            /*            width: 400px;*/
+            /*            height: 600px;*/
+            border-radius: 7px;
+            box-shadow: 0 0 30px #333;
+            background-color: #fff;
+            padding: 10px 20px;
+            flex-direction: column;
+            display: flex;
+            /*            align-items: center;*/
+            padding: 20px 30px;
+        }
+
+        .i {
+            font-family: 'Lobster', cursive;
+        }
+
+        .p_box1 {
+            font-size: 20px;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .sign_in,
+        .log_in {
+            border: 1px solid greenyellow;
+            background: none;
+            width: 8em;
+            height: 2em;
+            font-size: 10px;
+            background-color: none;
+            margin: 10px 0;
+            margin-left: -5px;
+        }
+
+        .buts {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            padding: 0;
+            margin-left: 15px;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            padding: 5px;
+        }
+
+        .in_header_logo {
+            width: 40px;
+            margin: 10px;
+        }
+
+        input {
+            margin: 20px;
+        }
+
+        .box1 {
+            display: none;
+        }
+
+        .container {
+            width: 8em;
+            height: 12.3em;
+
+            /*    border: 2px dotted white;*/
+            transform-style: preserve-3d;
+            animation: rotate 10s infinite linear;
+        }
+
+        .container:before,
+        .container:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 8em;
+            height: 12.3em;
+            /*    border: 2px dotted white;*/
+        }
+
+        .container:before {
+            transform: rotateX(90deg);
+        }
+
+        .container:after {
+            transform: rotatey(90deg);
+        }
+
+        .side {
+            position: absolute;
+            width: 8em;
+            height: 12.3em;
+            /*    border: 1px solid white;*/
+            /*    opacity: .7;*/
+        }
+
+        .back {
+            transform: translateZ(-3em);
+            background: red;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background-color: #fff;
+            flex-direction: column;
+            padding: 10px 15px;
+            border-radius: 7px;
+            box-shadow: 0 0 30px #333;
+            background-color: #fff;
+        }
+
+        .back input {
+            width: 80px;
+            height: 10px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            margin-top: -10px;
+            outline: none;
+            font-size: 5px;
+            border: none;
+            border-bottom: 1px solid #000;
+        }
+
+        .back h2 {
+            font-size: 10px;
+        }
+
+        .back p {
+            font-size: 5px;
+
+        }
+
+        .back .buts {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .front {
+            transform: translateZ(7em);
+            background: red;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background-color: #fff;
+            flex-direction: column;
+            padding: 10px 15px;
+            border-radius: 7px;
+            box-shadow: 0 0 30px #333;
+            background-color: #fff;
+        }
+
+        .top {
+            transform: translateY(-3em) rotateX(90deg);
+            background: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .bottom {
+            transform: translateY(7em) rotateX(90deg);
+            background: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .left {
+            transform: translateX(-3em) rotateY(90deg);
+            background: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .right {
+            transform: translateX(4.03em) rotateY(90deg);
+            background: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        /*
+        
+@keyframes rotate {
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+*/
+
+
+        .h2 {
+            font-size: 10px;
+        }
+
+        h2 {
+            font-size: 15px;
+        }
+
+        #backButt {
+            width: 20px;
+            height: 8px;
+            border: 1px solid greenyellow;
+            background: none;
+            border-radius: 3px;
+            font-size: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #log_inBox {
+            width: 60px;
+            font-size: 5px;
+            height: 12px;
+            margin-left: 0px;
+        }
+
+        .box_big {
+            width: 700px;
+            height: 500px;
+            background: #fff;
+            box-shadow: 0 0 10px #333;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .wrap_signIn {
+            width: 100%;
+            height: 90vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .left-side {
+            width: 1000px;
+            height: 100%;
+        }
+
+        .right-side {
+            width: 50%;
+            height: 100%;
+        }
+
+        .cent_box,
+        .end_box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrap_signIn input {
+            width: 300px;
+        }
+
+        .wrap_signIn p {
+            margin: 0 0 -50px 20px;
+        }
+
+
+        .inp {
+            width: 200px;
+            height: 30px;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: none;
+            z-index: 1;
+            position: relative;
+            outline: none;
+            margin-bottom: 40px;
+        }
+
+        .inps {
+            margin-top: 50px;
+        }
+
+        p {
+            transition: 0.5s;
+        }
+
+        input {
+            transition: 0.5s;
+        }
+
+        .photo {
+            height: 400px;
+            width: 280px;
+            border: 1px solid #000;
+            margin-top: 10px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        #save_photo,
+        #save_acc {
+            width: 200px;
+            height: 40px;
+            border: 1px solid greenyellow;
+            background: none;
+            border-radius: 3px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -12px;
+        }
+
+        #inp6 {
+            margin-top: 10px;
+        }
+
+        .wrap_signIn h2 {
+            font-size: 30px;
+
+        }
+
+        #save_acc {
+            margin-left: 80px;
+            margin-top: 10px;
+        }
+
+        .wrap3 {}
+
+        .boxInfo {
+            width: 500px;
+            height: 600px;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+            flex-direction: column;
+            margin: 0 100px;
+        }
+
+        .wrap3 {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            width: 100%;
+        }
+
+        .head {
+            height: 25%;
+            width: 100%;
+            /*            border: 1px solid #000;*/
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            font-size: 40px;
+        }
+
+        .center {
+            height: 50%;
+            width: 100%;
+            /*            border: 1px solid #000;*/
+            display: flex;
+            flex-direction: row;
+        }
+
+        .end {
+            height: 25%;
+            width: 100%;
+            /*            border: 1px solid #000;*/
+            padding-left: 20px;
+        }
+
+        .left_cent,
+        .right_cent {
+            width: 50%;
+            height: 100%;
+            /*            border: 1px solid #000;*/
+            padding: 20px;
+        }
+
+        .photo_left {
+            width: 80%;
+            height: 90%;
+            border: 1px solid #000;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .birth {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .end div {
+            font-size: 30px;
+        }
+
+        #back_but {
+            width: 200px;
+            height: 40px;
+            background: none;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 20px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back_head {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .img_head {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .id_boX {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .ID {
+            margin: 0 3px;
+        }
+
+        .sideBar {
+            height: 100vh;
+            width: 25%;
+            background-color: #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 1s;
+        }
+
+        .head_sideBar img {
+            width: 100px;
+        }
+
+        .about img {
+            width: 50px;
+        }
+
+        .about {
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 40px;
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .fs_b {
+            margin-top: 5px;
+            margin-left: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .fs_b:hover {
+            color: #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="content" id="content">
+
+
+        <header>
+            <div class="back_head">
+                <button id="back_but">Вийти з акаунта</button>
+            </div>
+            <div class="img_head">
+                <img src="logo.png" id="btn" class="in_header_logo" alt="">
+            </div>
+
+        </header>
+        <div class="wrap1">
+            <img src="%D0%94%D1%96%D1%8F_logo.png" alt="" id="logo_page1">
+            <div class="loader" id="loader">
+
+            </div>
+        </div>
+        <div class="wrap2">
+            <div class="container" id="container">
+                <div class="back side" id="back">
+
+                    <button id="backButt">Back</button>
+                    <div class="log_in_box">
+                        <h2>Війдіть у свій акаунт</h2>
+                        <div class="buts">
+                            <p>Введіть ваш ID</p>
+                            <input type="number" id="id_number">
+                            <button class="log_in" id="log_inBox">Війти в акаунт</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="top side" id="top"></div>
+                <div class="bottom side" id="bottom"></div>
+                <div class="front side" id="front">
+                    <h2>Вітаємо</h2>
+                    <p class="h2">Ви у нас вперше, тому зареєструйтеся будь ласка або війдіть у свій акаунт</p>
+                    <div class="buts">
+                        <button class="sign_in" id="sign_inBox">Зареєструватися</button>
+                        <button class="log_in" id="log_in">Війти в акаунт</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_signIn">
+            <div class="box_big">
+                <div class="left-side">
+                    <div class="head_box">
+                        <h2>Створіть свій власний акаунт в Дія</h2>
+                    </div>
+                    <div class="inps">
+                        <div class="cent_box">
+                            <p class="p1">Прізвище</p>
+                            <input type="text" class="inp" id="inp1">
+                            <p class="p2">Ім'я</p>
+                            <input type="text" class="inp" id="inp2">
+                            <p class="p3">По-батькові</p>
+                            <input type="text" class="inp" id="inp3">
+                        </div>
+                        <div class="end_box">
+                            <p class="p4">Номер телефону</p>
+                            <input type="text" class="inp" id="inp4">
+                            <p class="p5">Дата народження (01.01.2022)</p>
+                            <input type="text" class="inp" id="inp5">
+                            <button id="save_acc">Зберегти акаунт</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="photo">
+
+                    </div>
+                    <input type="file" id="inp6">
+                    <button id="save_photo">Зберегти фото</button>
+                </div>
+            </div>
+        </div>
+        <div class="wrap3">
+
+            <div class="boxInfo" id="info">
+                <div class="head">
+                    Інформація
+                </div>
+                <div class="center">
+                    <div class="left_cent">
+                        <div class="photo_left"></div>
+                    </div>
+                    <div class="right_cent">
+                        <div class="S-name"></div>
+                        <div class="name"></div>
+                        <div class="F-name"></div>
+                        <div class="birth">Дата народження: <br>
+                            <p class="birthday"></p>
+                        </div>
+                        <div class="id_boX">ID: <p class="ID"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="end">
+                    <div class="S-name"></div>
+                    <div class="name"></div>
+                    <div class="F-name"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="sideBar" id="sideBar">
+        <div class="head_sideBar">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="body_sideBar">
+            <div class="about">
+                <img src="pngwing.com.png" alt="">
+                <a href="prava.html" class="fs_b">Посвідчення водія</a>
+            </div>
+            <div class="about">
+                <img src="waks.png" alt="">
+                <a href="vakcina.html" class="fs_b">Вакцинація</a>
+            </div>
+            <div class="about">
+                <img src="kisspng-drawing-coloring-book-passport-sketch-passport-5b050a82d6bad7.5157483115270570268796.png" alt="">
+                <a href="prava.html" class="fs_b">Паспорт</a>
+            </div>
+            <div class="about">
+                <img src="images.png" alt="">
+                <a href="prava.html" class="fs_b">Подорожі</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        ////////////////////////////////////----------------------------------------
+
+        $('.wrap3').css('display', 'none')
+
+
+
+
+        let stayEl = JSON.parse(localStorage.getItem('stay')) || false;
+
+        let arr = JSON.parse(localStorage.getItem('status')) || [];
+
+        if (stayEl == false) {
+            setTimeout(function() {
+                loader.style.transition = '1s';
+                logo_page1.style.transition = '1s';
+                loader.style.marginTop = '50px';
+                $('#loader').append(' <div class="spinner-border text-info" role="status"><span class="visually-hidden">Loading...</span></div> ')
+                $('.wrap3').css('display', 'none')
+            }, 1000)
+        } else {
+
+        }
+
+        if (stayEl == true) {
+            setTimeout(function() {
+                $('.wrap1').css('display', 'none')
+                $('.wrap2').css('display', 'none')
+                $('.wrap3').css('display', 'flex')
+                $('#back_but').css('display', 'flex')
+            }, 0)
+        } else {
+            setTimeout(function() {
+                $('.wrap1').css('display', 'none')
+                $('.wrap3').css('display', 'none')
+                $('.wrap2').css('display', 'flex')
+            }, 0)
+        }
+
+        $('#log_inBox').click(function() {
+            for (let i = 0; i < JSON.parse(localStorage.getItem('status')).length; i++) {
+                if (JSON.parse(localStorage.getItem('status'))[i].email == $('#email').val()) {
+                    if (JSON.parse(localStorage.getItem('status'))[i].password == $('#password').val()) {
+                        $('.wrap2').css('display', 'none')
+                        //                        $('.wrap').css('display', 'none')
+                        $('.wrap3').css('display', 'flex')
+                    }
+                }
+            }
+        })
+
+
+        $('#sign_inBox').click(function() {
+            $('.wrap2').css('display', 'none')
+            $('.wrap_signIn').css('display', 'flex')
+        })
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////-----------------------------------------------------------
+
+
+
+
+
+        let current = 0;
+        let scale = 3.5;
+        const container = document.getElementById('container');
+        container.style.transform = 'scale(' + scale + ')';
+        //front.innerText = 'home page';
+
+
+        log_in.addEventListener('click', function() {
+            if (current == 0) {
+                current += 180;
+                //        scale = 2.5;
+                //        document.body.style.backgroundColor = '#000';
+                //        document.body.style.transition = '1.2s';
+                setBg();
+
+            } else {
+                current -= 180;
+                //        scale = 3.5;
+                //        document.body.style.backgroundColor = '#fff';
+                //        document.body.style.transition = '1.2s';
+                setBg();
+            }
+            container.style.transition = '0.8s';
+            container.style.transform = 'scale(' + scale + ') rotateY(' + current + 'deg)';
+            back.style.transform = 'rotateY(-180deg)';
+        })
+
+        backButt.addEventListener('click', function() {
+            if (current == 0) {
+                current += 180;
+                //        scale = 2.5;
+                //        document.body.style.backgroundColor = '#000';
+                //        document.body.style.transition = '1.2s';
+                setBg();
+
+            } else {
+                current -= 180;
+                //        scale = 3.5;
+                //        document.body.style.backgroundColor = '#fff';
+                //        document.body.style.transition = '1.2s';
+                setBg();
+            }
+            container.style.transition = '0.8s';
+            container.style.transform = 'scale(' + scale + ') rotateY(' + current + 'deg)';
+            back.style.transform = 'rotateY(-180deg)';
+        })
+
+        function setBg() {
+            setTimeout(function() {
+                document.body.style.backgroundColor = 'black';
+                document.body.style.transition = '0.8s';
+            }, 0)
+            setTimeout(function() {
+                document.body.style.backgroundColor = 'red';
+                document.body.style.transition = '0.8s'
+            }, 500)
+        }
+
+        ////////////////////////////////////////////-------------------------------------------------
+
+
+        $('#inp1').click(function() {
+            $('.p1').css('margin-top', '-22px')
+            $('.p1').css('font-size', '13px')
+            $('#inp1').css('margin-top', '44px')
+        })
+
+        $('#inp2').click(function() {
+            $('.p2').css('margin-top', '-22px')
+            $('.p2').css('font-size', '13px')
+            $('#inp2').css('margin-top', '44px')
+        })
+
+        $('#inp3').click(function() {
+            $('.p3').css('margin-top', '-22px')
+            $('.p3').css('font-size', '13px')
+            $('#inp3').css('margin-top', '44px')
+        })
+
+        $('#inp4').click(function() {
+            $('.p4').css('margin-top', '-22px')
+            $('.p4').css('font-size', '13px')
+            $('#inp4').css('margin-top', '44px')
+        })
+
+        $('#inp5').click(function() {
+            $('.p5').css('margin-top', '-22px')
+            $('.p5').css('font-size', '13px')
+            $('#inp5').css('margin-top', '44px')
+        })
+
+        let valuePhoto;
+
+        $('#save_photo').click(function() {
+            setTimeout(function() {
+                valuePhoto = $('#inp6').val();
+                $('.photo').css('background-image', 'url(' + valuePhoto.slice(12) + ')')
+            }, 100)
+        })
+
+        /////////////////////////////////////////////////-------------------------------------------------
+
+        $('#save_acc').click(function() {
+            let id = Math.floor(Math.random() * 999999)
+            $('.S-name').html('')
+            $('.name').html('')
+            $('.F-name').html('')
+            $('.birthday').html('')
+            $('.ID').html('')
+
+            let user = {
+                name: $('#inp2').val(),
+                Surname: $('#inp1').val(),
+                FatherName: $('#inp3').val(),
+                phone: $('#inp4').val(),
+                birthday: $('#inp5').val(),
+                photo: valuePhoto.slice(12),
+                id: id
+            }
+            arr.push(user)
+            localStorage.setItem('status', JSON.stringify(arr))
+            //////////////////////////---------------------------
+
+
+            localStorage.setItem('photo', JSON.stringify(valuePhoto.slice(12)))
+            localStorage.setItem('name', JSON.stringify($('#inp2').val()))
+            localStorage.setItem('Surname', JSON.stringify($('#inp1').val()))
+            localStorage.setItem('FatherName', JSON.stringify($('#inp3').val()))
+            localStorage.setItem('phone', JSON.stringify($('#inp4').val()))
+            localStorage.setItem('birthday', JSON.stringify($('#inp5').val()))
+            localStorage.setItem('ID', JSON.stringify(id))
+            localStorage.setItem('prava', JSON.stringify(false))
+            localStorage.setItem('pravaNumber', JSON.stringify(''))
+            localStorage.setItem('vack', JSON.stringify(false))
+            localStorage.setItem('VidVack', JSON.stringify(''))
+
+            /////////////////////////////-----------------------------------
+
+            $('#inp2').val('')
+            $('#inp1').val('')
+            $('#inp3').val('')
+            $('#inp4').val('')
+            $('#inp5').val('')
+
+            /////////////////////////////------------------------------------
+
+            console.log(arr)
+            stayEl = localStorage.setItem('stay', JSON.stringify(true))
+            $('.wrap_signIn').css('display', 'none')
+            $('.wrap3').css('display', 'flex')
+
+            //            JSON.parse(localStorage.getItem('photo'))
+            $('.photo_left').css('background-image', 'url(' + JSON.parse(localStorage.getItem('photo')) + ')')
+            $('.S-name').html(JSON.parse(localStorage.getItem('Surname')))
+            $('.name').html(JSON.parse(localStorage.getItem('name')))
+            $('.F-name').html(JSON.parse(localStorage.getItem('FatherName')))
+            $('.birthday').html(JSON.parse(localStorage.getItem('birthday')))
+            $('.ID').html(JSON.parse(localStorage.getItem('ID')))
+        })
+
+        $('.S-name').html(JSON.stringify(localStorage.getItem('Surname')))
+        $('.F-name').html(JSON.stringify(localStorage.getItem('FatherName')))
+        $('.name').html(JSON.stringify(localStorage.getItem('name')))
+        $('.birthday').html(JSON.stringify(localStorage.getItem('birthday')))
+        $('.ID').html(JSON.stringify(localStorage.getItem('ID')))
+        $('.photo_left').css('background-image', 'url(' + JSON.stringify(localStorage.getItem('photo')) + ')')
+        //        $('.photo_left').css('background-image', 'url(' + JSON.parse(localStorage.getItem('photo')) + ')')
+        //        $('.S-name').append(JSON.parse(localStorage.getItem('Surname')))
+        //        $('.name').append(JSON.parse(localStorage.getItem('name')))
+        //        $('.F-name').append(JSON.parse(localStorage.getItem('FatherName')))
+        //        $('.birthday').append(JSON.parse(localStorage.getItem('birthday')))
+        //        $('.ID').append(JSON.parse(localStorage.getItem('ID')))
+
+        console.log(JSON.parse(localStorage.getItem('status')))
+
+
+        //////////////////////////////////////////////------------------------------------------------------------
+
+        $('#back_but').click(function() {
+            stayEl = localStorage.setItem('stay', JSON.stringify(false))
+            $('.photo_left').css('background-image', 'url()')
+            $('.S-name').html('')
+            $('.name').html('')
+            $('.F-name').html('')
+            $('.birthday').html('')
+            $('.ID').html('')
+            $('#back_but').css('display', 'none')
+            if (stayEl == true) {
+                setTimeout(function() {
+                    $('.wrap1').css('display', 'none')
+                    $('.wrap2').css('display', 'none')
+                    $('.wrap3').css('display', 'flex')
+                    $('#back_but').css('display', 'flex')
+                }, 3000)
+            } else {
+                setTimeout(function() {
+                    $('.wrap1').css('display', 'none')
+                    $('.wrap3').css('display', 'none')
+                    $('.wrap2').css('display', 'flex')
+                }, 3000)
+            }
+
+        })
+
+        $('#log_inBox').click(function() {
+            let id_logIN = $('#id_number').val()
+            for (let i = 0; i < JSON.parse(localStorage.getItem('status')).length; i++) {
+                if (JSON.parse(localStorage.getItem('status'))[i].id == id_logIN) {
+                    $('.photo_left').css('background-image', 'url(' + localStorage.getItem('status')[i].photo + ')')
+//                    $('.S-name').html(localStorage.getItem('status')[i].Surname)
+//                    $('.name').html(localStorage.getItem('status')[i].name)
+//                    $('.F-name').html(localStorage.getItem('status')[i].FatherName)
+//                    $('.birthday').html(localStorage.getItem('status')[i].birthday)
+//                    $('.ID').html(localStorage.getItem('status')[i].id)
+                    stayEl = localStorage.setItem('stay', JSON.stringify(true))
+//
+                      localStorage.setItem('photo', JSON.parse(localStorage.getItem('status'))[i].photo)
+                    localStorage.setItem('name', JSON.parse(localStorage.getItem('status'))[i].name)
+                    localStorage.setItem('Surname', JSON.parse(localStorage.getItem('status'))[i].Surname)
+                    localStorage.setItem('FatherName', JSON.parse(localStorage.getItem('status'))[i].FatherName)
+                    localStorage.setItem('phone', JSON.parse(localStorage.getItem('status'))[i].phone)
+                    localStorage.setItem('birthday', JSON.parse(localStorage.getItem('status'))[i].birthday)
+                    localStorage.setItem('ID', JSON.parse(localStorage.getItem('status'))[i].id)
+                }
+            }
+        })
+
+        //        $('.photo_left').css('background-image', 'url(' + localStorage.getItem('photo') + ')')
+        //        $('.S-name').html(localStorage.getItem('Surname'))
+        //        $('.name').html(localStorage.getItem('name'))
+        //        $('.F-name').html(localStorage.getItem('FatherName'))
+        //        $('.birthday').html(localStorage.getItem('birthday'))
+        //        $('.ID').html(localStorage.getItem('ID'))
+
+        setInterval(function() {
+            if (stayEl == true) {
+                $('#back_but').css('display', 'flex')
+            } else {
+                $('#back_but').css('display', 'none')
+            }
+
+        }, 1000)
+
+        ///////////////////////////////////////////////////-----------------------------------------------------
+
+        let cl = 1
+
+        if (cl == 0) {
+            sideBar.style.left = '-25%';
+            content.style.left = '0';
+            content.style.width = '100%';
+        }
+        if (cl == 1) {
+            sideBar.style.left = '0%';
+            content.style.left = '0';
+            content.style.width = '75%';
+        }
+
+        if (stayEl == false) {
+            btn.onclick = function() {}
+            content.style.width = '100%';
+            sideBar.style.display = 'none';
+        } else {
+            sideBar.style.display = 'block';
+            btn.onclick = function() {
+                if (cl == 1) {
+                    sideBar.style.left = '-25%';
+                    content.style.left = '0';
+                    content.style.width = '100%';
+                    cl = 0
+                } else if (cl == 0) {
+                    sideBar.style.left = '0%';
+                    content.style.left = '25%';
+                    content.style.width = '75%';
+                    cl = 1
+                }
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
